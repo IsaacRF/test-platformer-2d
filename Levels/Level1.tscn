@@ -26,6 +26,6 @@ texture = ExtResource("2_u7mh4")
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_0vlhn")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(27, -3)
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(27, 11)
 zoom = Vector2(3, 3)
