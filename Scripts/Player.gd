@@ -7,6 +7,13 @@ var deceleration : float = 20.0
 var jump_force : float = 200.0
 var gravity : float = 500.0
 
+var death_sfx : AudioStreamPlayer2D
+var camera : RemoteTransform2D
+
+func _ready():
+	death_sfx = $DeathSFX
+	camera = $CameraFollow
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -24,6 +31,10 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, deceleration)
 		
-
-
 	move_and_slide()
+
+func game_over():
+	death_sfx.play()
+	camera.update_position = false
+	await get_tree().create_timer(1.0).timeout
+	get_tree().reload_current_scene()
