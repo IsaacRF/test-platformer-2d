@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="2_acmkx"]
 [ext_resource type="Texture2D" uid="uid://bqb4j84403j2a" path="res://Sprites/Characters/character_0000.png" id="2_u7mh4"]
 [ext_resource type="Script" path="res://Scripts/DeathArea.gd" id="4_5dl65"]
-[ext_resource type="AudioStream" uid="uid://uj3v0afm2vum" path="res://Sound/SFX/Death.ogg" id="4_h2ldl"]
+[ext_resource type="AudioStream" uid="uid://cesq424vl0eem" path="res://Sound/SFX/Death.ogg" id="4_h2ldl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0vlhn"]
 radius = 8.0
