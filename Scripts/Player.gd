@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 
 var move_speed : float = 300.0
+var acceleration : float = 20.0
+var deceleration : float = 20.0
 var jump_force : float = 200.0
 var gravity : float = 500.0
 
@@ -18,9 +20,9 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction:
-		velocity.x = direction * move_speed
+		velocity.x = move_toward(velocity.x, direction * move_speed, acceleration)
 	else:
-		velocity.x = move_toward(velocity.x, 0, move_speed)
+		velocity.x = move_toward(velocity.x, 0, deceleration)
 		
 
 
