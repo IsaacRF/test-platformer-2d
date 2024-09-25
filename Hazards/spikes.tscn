@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc1enkycophux"]
+
+[ext_resource type="PackedScene" uid="uid://c24mvw6mog33k" path="res://Hazards/death_area.tscn" id="1_int6s"]
+[ext_resource type="Texture2D" uid="uid://bj4phc7ceh37p" path="res://Sprites/Objects/tile_0068.png" id="2_ldg5i"]
+
+[node name="Spikes" type="Node2D"]
+position = Vector2(25, -9)
+
+[node name="DeathArea" parent="." instance=ExtResource("1_int6s")]
+position = Vector2(0, 4.065)
+scale = Vector2(0.26, 0.145)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ldg5i")

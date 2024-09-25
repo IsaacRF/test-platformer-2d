@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce86m0dq0uewy"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_f3dj8"]
+[ext_resource type="Texture2D" uid="uid://dpfw6ck4mow1p" path="res://Sprites/Characters/character_0024.png" id="2_20tth"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdwtm"]
+size = Vector2(8, 2)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mkmyd"]
+radius = 5.0
+height = 10.0
+
+[node name="Enemy" type="CharacterBody2D"]
+position = Vector2(139, -11)
+script = ExtResource("1_f3dj8")
+move_range = Vector2(0, -50)
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_20tth")
+
+[node name="StepCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_mdwtm")
+debug_color = Color(0.320982, 0.491002, 1, 0.42)
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_mkmyd")
+debug_color = Color(0.986556, 0, 0.322367, 0.42)
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

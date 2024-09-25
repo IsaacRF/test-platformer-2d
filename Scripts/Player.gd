@@ -7,12 +7,14 @@ var deceleration : float = 20.0
 var jump_force : float = 200.0
 var gravity : float = 500.0
 
+var is_dead : bool
+
 var death_sfx : AudioStreamPlayer2D
-var camera : RemoteTransform2D
+
+var score : int
 
 func _ready():
 	death_sfx = $DeathSFX
-	camera = $CameraFollow
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -25,16 +27,23 @@ func _physics_process(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = move_toward(velocity.x, direction * move_speed, acceleration)
-	else:
-		velocity.x = move_toward(velocity.x, 0, deceleration)
-		
+	if not is_dead:
+		var direction = Input.get_axis("ui_left", "ui_right")
+		if direction:
+			velocity.x = move_toward(velocity.x, direction * move_speed, acceleration)
+		else:
+			velocity.x = move_toward(velocity.x, 0, deceleration)
+	
 	move_and_slide()
+	
+func add_score(score):
+	score += amount
 
 func game_over():
+	is_dead = true
 	death_sfx.play()
-	camera.update_position = false
+	$Sprite.flip_v = true
+	$CameraFollow.update_position = false
+	$CollisionShape2D.set_deferred("disabled", true)
 	await get_tree().create_timer(1.0).timeout
 	get_tree().reload_current_scene()
