@@ -23,6 +23,12 @@ scale = Vector2(27.815, 3.035)
 [node name="Spikes" parent="." instance=ExtResource("3_ryear")]
 position = Vector2(-75, -9)
 
+[node name="Spikes2" parent="." instance=ExtResource("3_ryear")]
+position = Vector2(-58, -9)
+
+[node name="Spikes3" parent="." instance=ExtResource("3_ryear")]
+position = Vector2(-92, -9)
+
 [node name="Player" parent="." instance=ExtResource("2_4xf5a")]
 
 [node name="Camera" type="Camera2D" parent="."]
