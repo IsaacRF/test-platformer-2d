@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl4xbenkbhosn"]
+
+[ext_resource type="PackedScene" uid="uid://chaa82vsojv1e" path="res://Items/collectable.tscn" id="1_baly8"]
+[ext_resource type="Texture2D" uid="uid://b6uk5yah7vtj8" path="res://Sprites/Objects/tile_0044.png" id="2_slhsp"]
+[ext_resource type="AudioStream" uid="uid://dsgvm0ksc3obg" path="res://Sound/SFX/Life.mp3" id="3_wvbqd"]
+
+[node name="Heart" type="Node2D"]
+position = Vector2(-173, -10)
+
+[node name="Collectable" parent="." instance=ExtResource("1_baly8")]
+position = Vector2(0, 0)
+score_value = 0
+life_value = 1
+texture = ExtResource("2_slhsp")
+sfx = ExtResource("3_wvbqd")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnyd1vwwx87dh"]
+
+[ext_resource type="PackedScene" uid="uid://chaa82vsojv1e" path="res://Items/collectable.tscn" id="1_2yidf"]
+[ext_resource type="Texture2D" uid="uid://bvtgnupl518i2" path="res://Sprites/Objects/tile_0067.png" id="2_6kig5"]
+[ext_resource type="AudioStream" uid="uid://coxgluwrowrdu" path="res://Sound/SFX/Sparkle.mp3" id="3_2qgei"]
+
+[node name="Diamond" type="Node2D"]
+
+[node name="Collectable" parent="." instance=ExtResource("1_2yidf")]
+position = Vector2(0, 0)
+score_value = 20
+texture = ExtResource("2_6kig5")
+sfx = ExtResource("3_2qgei")

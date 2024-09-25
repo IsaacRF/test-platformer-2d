@@ -12,6 +12,7 @@ var is_dead : bool
 var death_sfx : AudioStreamPlayer2D
 
 var score : int
+var life : int
 
 func _ready():
 	death_sfx = $DeathSFX
@@ -36,8 +37,11 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-func add_score(score):
+func add_score(amount):
 	score += amount
+	
+func add_life(amount):
+	life += amount
 
 func game_over():
 	is_dead = true

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://k7lnut2sf85b"]
+
+[ext_resource type="PackedScene" uid="uid://chaa82vsojv1e" path="res://Items/collectable.tscn" id="1_p0ye2"]
+[ext_resource type="Texture2D" uid="uid://ydbe1tyhvygu" path="res://Sprites/Objects/tile_0151.png" id="2_kvgju"]
+[ext_resource type="AudioStream" uid="uid://dhrrs6ls2lay6" path="res://Sound/SFX/Coin.mp3" id="3_w4n4l"]
+
+[node name="Coin" type="Node2D"]
+position = Vector2(28, -10)
+
+[node name="Collectable" parent="." instance=ExtResource("1_p0ye2")]
+position = Vector2(0, 0)
+texture = ExtResource("2_kvgju")
+sfx = ExtResource("3_w4n4l")
