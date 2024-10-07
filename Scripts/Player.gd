@@ -1,5 +1,7 @@
 extends CharacterBody2D
+class_name Player
 
+@onready var score_label : Label = get_tree().current_scene.get_node("UI/Score")
 
 var move_speed : float = 300.0
 var acceleration : float = 20.0
@@ -39,6 +41,10 @@ func _physics_process(delta):
 	
 func add_score(amount):
 	score += amount
+	score_label.text = str(score)
+	
+func get_score():
+	score
 	
 func add_life(amount):
 	life += amount

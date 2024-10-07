@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://1nppty5rw424"]
+
+[ext_resource type="Texture2D" uid="uid://ydbe1tyhvygu" path="res://Sprites/Objects/tile_0151.png" id="1_5w3yd"]
+
+[sub_resource type="GDScript" id="GDScript_5iakh"]
+script/source = "extends CanvasLayer
+
+@export var player : Player
+@onready var score : Label = get_node(\"Score\")
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if (player && score):
+		score.text = player.get_score()
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_3onik"]
+font_size = 42
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="UI" type="CanvasLayer"]
+script = SubResource("GDScript_5iakh")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 61.0
+offset_bottom = 58.0
+texture = ExtResource("1_5w3yd")
+
+[node name="Score" type="Label" parent="."]
+offset_left = 61.0
+offset_top = 4.0
+offset_right = 101.0
+offset_bottom = 62.0
+text = "0"
+label_settings = SubResource("LabelSettings_3onik")

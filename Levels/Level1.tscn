@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=4 uid="uid://c2oa4y33f2ejk"]
+[gd_scene load_steps=10 format=4 uid="uid://c2oa4y33f2ejk"]
 
+[ext_resource type="PackedScene" uid="uid://1nppty5rw424" path="res://Resources/ui.tscn" id="1_1xj1a"]
 [ext_resource type="TileSet" uid="uid://do245kxupqu6" path="res://Resources/TileSet.tres" id="1_qi6rl"]
 [ext_resource type="PackedScene" uid="uid://dkfwvong7lmki" path="res://Chars/player.tscn" id="2_4xf5a"]
 [ext_resource type="PackedScene" uid="uid://c24mvw6mog33k" path="res://Hazards/death_area.tscn" id="3_kkkvf"]
@@ -10,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://bl4xbenkbhosn" path="res://Items/heart.tscn" id="8_rq5mv"]
 
 [node name="Main" type="Node2D"]
+
+[node name="UI" parent="." instance=ExtResource("1_1xj1a")]
+script = null
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 use_parent_material = true
