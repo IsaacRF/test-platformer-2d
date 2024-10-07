@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://c2oa4y33f2ejk"]
+[gd_scene load_steps=11 format=4 uid="uid://c2oa4y33f2ejk"]
 
 [ext_resource type="PackedScene" uid="uid://1nppty5rw424" path="res://Resources/ui.tscn" id="1_1xj1a"]
 [ext_resource type="TileSet" uid="uid://do245kxupqu6" path="res://Resources/TileSet.tres" id="1_qi6rl"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://k7lnut2sf85b" path="res://Items/coin.tscn" id="6_aijy8"]
 [ext_resource type="PackedScene" uid="uid://cnyd1vwwx87dh" path="res://Items/diamond.tscn" id="7_lyi1i"]
 [ext_resource type="PackedScene" uid="uid://bl4xbenkbhosn" path="res://Items/heart.tscn" id="8_rq5mv"]
+[ext_resource type="PackedScene" uid="uid://ckyata4bog8oi" path="res://Zones/goal.tscn" id="10_exmqc"]
 
 [node name="Main" type="Node2D"]
 
@@ -102,3 +103,7 @@ position = Vector2(-649, -16)
 
 [node name="Heart2" parent="." instance=ExtResource("8_rq5mv")]
 position = Vector2(-582, -58)
+
+[node name="Goal" parent="." instance=ExtResource("10_exmqc")]
+position = Vector2(701, -9)
+next_level = "res://Levels/Level2.tscn"

@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://ckyata4bog8oi"]
+
+[ext_resource type="Script" path="res://Scripts/Goal.gd" id="1_f1jmv"]
+[ext_resource type="Texture2D" uid="uid://cotta52byente" path="res://Sprites/Objects/tile_0117.png" id="2_jittm"]
+[ext_resource type="Texture2D" uid="uid://cop47aoytyxtb" path="res://Sprites/Objects/tile_0112.png" id="3_htdes"]
+[ext_resource type="Texture2D" uid="uid://dqrtaupkd6gly" path="res://Sprites/Objects/tile_0113.png" id="4_egaye"]
+[ext_resource type="Texture2D" uid="uid://do5auk77payuw" path="res://Sprites/Objects/tile_0114.png" id="5_tidkv"]
+[ext_resource type="Texture2D" uid="uid://ccanbstf8t5ll" path="res://Sprites/Objects/tile_0115.png" id="6_7mke4"]
+[ext_resource type="Texture2D" uid="uid://d4deab5q65apl" path="res://Sprites/Objects/tile_0116.png" id="7_7qabu"]
+[ext_resource type="AudioStream" uid="uid://354iswlrugwc" path="res://Sound/SFX/Goal.mp3" id="8_bm78k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ufrc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jittm")
+}],
+"loop": true,
+"name": &"captured",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_htdes")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_egaye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tidkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7mke4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7qabu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iut2y"]
+
+[node name="Goal" type="Area2D"]
+position = Vector2(-31, -9)
+script = ExtResource("1_f1jmv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7ufrc")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_iut2y")
+debug_color = Color(0, 0.648532, 0.177664, 0.42)
+
+[node name="GoalSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_bm78k")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
