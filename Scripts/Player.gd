@@ -5,6 +5,7 @@ class_name Player
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var _death_sfx = $DeathSFX
 @onready var _jump_sfx = $JumpSFX
+@onready var _gpu_particles_2d = $GPUParticles2D
 
 var move_speed : float = 300.0
 var acceleration : float = 20.0
@@ -70,6 +71,7 @@ func game_over():
 	is_dead = true
 	_death_sfx.play()
 	_animated_sprite.play("death")
+	_gpu_particles_2d.emitting = true
 	$CameraFollow.update_position = false
 	$CollisionShape2D.set_deferred("disabled", true)
 	await get_tree().create_timer(1.0).timeout

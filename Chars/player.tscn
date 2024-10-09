@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dkfwvong7lmki"]
+[gd_scene load_steps=10 format=3 uid="uid://dkfwvong7lmki"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_2cvhw"]
 [ext_resource type="Texture2D" uid="uid://bqb4j84403j2a" path="res://Sprites/Characters/character_0000.png" id="2_cehwt"]
@@ -6,6 +6,17 @@
 [ext_resource type="Texture2D" uid="uid://2k3iywmsqila" path="res://Sprites/Characters/character_0001.png" id="3_fvqxq"]
 [ext_resource type="AudioStream" uid="uid://cesq424vl0eem" path="res://Sound/SFX/Death.ogg" id="3_x44u1"]
 [ext_resource type="AudioStream" uid="uid://3vhqx2ccx8be" path="res://Sound/SFX/Jump.mp3" id="6_ravld"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_58o0p"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 4.71
+angle_min = 153.9
+angle_max = 153.9
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 69.29
+initial_velocity_max = 69.29
+gravity = Vector3(0, 98, 0)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f6yqb"]
 animations = [{
@@ -52,6 +63,13 @@ height = 22.0
 [node name="Player" type="CharacterBody2D" groups=["Players"]]
 position = Vector2(0, -14)
 script = ExtResource("1_2cvhw")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -10)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_58o0p")
+lifetime = 0.5
+fixed_fps = 60
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f6yqb")
