@@ -13,3 +13,6 @@ data_*/
 
 # Godot 4 specific files
 .godot
+
+# Export folders
+bin/
