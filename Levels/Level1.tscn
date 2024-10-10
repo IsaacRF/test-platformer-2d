@@ -13,8 +13,8 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="UI" parent="." instance=ExtResource("1_1xj1a")]
-script = null
+[node name="UI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_1xj1a")]
+player = NodePath("../Player")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -46,14 +46,15 @@ position = Vector2(361, -68)
 move_range = Vector2(-50, 0)
 
 [node name="Enemy3" parent="." instance=ExtResource("4_7js0x")]
-position = Vector2(568, -12)
-move_speed = 100.0
-move_range = Vector2(-50, -50)
-
-[node name="Enemy4" parent="." instance=ExtResource("4_7js0x")]
 position = Vector2(-217, 3)
 move_speed = 100.0
 move_range = Vector2(-250, 0)
+
+[node name="Enemy4" parent="." instance=ExtResource("4_7js0x")]
+position = Vector2(568, -12)
+move_speed = 100.0
+move_range = Vector2(-50, -50)
+damage = 3
 
 [node name="Coin" parent="." instance=ExtResource("6_aijy8")]
 

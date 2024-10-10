@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var move_speed : float = 30.0
 @export var move_range : Vector2
+@export var damage : int = 1
 
 @onready var _animated_sprite = $AnimatedSprite2D
 
@@ -32,4 +33,4 @@ func _process(delta):
 func _on_hurtbox_body_entered(body):
 	if body.is_in_group("Players"):
 		# The player entered the hazard zone.
-		body.call("game_over")
+		body.call("damage", damage)
