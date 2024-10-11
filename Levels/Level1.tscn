@@ -44,6 +44,7 @@ zoom = Vector2(3, 3)
 [node name="Enemy2" parent="." instance=ExtResource("4_7js0x")]
 position = Vector2(361, -68)
 move_range = Vector2(-50, 0)
+damage = 1.25
 
 [node name="Enemy3" parent="." instance=ExtResource("4_7js0x")]
 position = Vector2(-217, 3)
@@ -54,7 +55,6 @@ move_range = Vector2(-250, 0)
 position = Vector2(568, -12)
 move_speed = 100.0
 move_range = Vector2(-50, -50)
-damage = 3
 
 [node name="Coin" parent="." instance=ExtResource("6_aijy8")]
 

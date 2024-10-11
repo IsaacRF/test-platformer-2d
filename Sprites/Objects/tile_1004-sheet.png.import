@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq7ccd8doil5i"
-path="res://.godot/imported/30 InDispersal4Step3.png-8696ff2af5df578c1ad1e4c2ecc7118d.ctex"
+uid="uid://cdyubxi26rxew"
+path="res://.godot/imported/tile_1004-sheet.png-641036273967fd59e11c408b478533f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Particles/30 InDispersal4Step3.png"
-dest_files=["res://.godot/imported/30 InDispersal4Step3.png-8696ff2af5df578c1ad1e4c2ecc7118d.ctex"]
+source_file="res://Sprites/Objects/tile_1004-sheet.png"
+dest_files=["res://.godot/imported/tile_1004-sheet.png-641036273967fd59e11c408b478533f5.ctex"]
 
 [params]
 

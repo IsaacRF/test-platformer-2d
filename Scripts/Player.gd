@@ -24,7 +24,7 @@ var is_dead : bool
 
 var score : int
 @export var max_life : int = 3
-@export var life : int = max_life
+@export var life : float = max_life
 @export var max_fuel : int = 100
 @export var fuel : int = max_fuel
 
@@ -79,15 +79,16 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-func add_score(amount):
+func add_score(amount: int):
 	score += amount
 	score_updated.emit(score)
 	
-func add_life(amount):
+func add_life(amount: float):
 	life += amount
+	if life > max_life: life = max_life
 	life_updated.emit(life)
 
-func damage(hit_points):
+func damage(hit_points: float):
 	life -= hit_points
 	life_updated.emit(life)
 	
@@ -109,6 +110,8 @@ func damage(hit_points):
 
 func game_over():
 	is_dead = true
+	life = 0
+	life_updated.emit(life)
 	_death_sfx.play()
 	_animated_sprite.play("death")
 	_sweat_particles.emitting = true

@@ -8,8 +8,8 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="UI" parent="." instance=ExtResource("1_2k0cv")]
-script = null
+[node name="UI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_2k0cv")]
+player = NodePath("../Player")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 use_parent_material = true

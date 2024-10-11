@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var move_speed : float = 30.0
 @export var move_range : Vector2
-@export var damage : int = 1
+@export var damage : float = 1
 
 @onready var _animated_sprite = $AnimatedSprite2D
 
