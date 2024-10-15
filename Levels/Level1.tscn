@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=4 uid="uid://c2oa4y33f2ejk"]
+[gd_scene load_steps=16 format=4 uid="uid://c2oa4y33f2ejk"]
 
 [ext_resource type="PackedScene" uid="uid://1nppty5rw424" path="res://Resources/ui.tscn" id="1_1xj1a"]
+[ext_resource type="Texture2D" uid="uid://df0k53bovdxfj" path="res://Sprites/Backgrounds/5.png" id="1_hrhot"]
 [ext_resource type="TileSet" uid="uid://do245kxupqu6" path="res://Resources/TileSet.tres" id="1_qi6rl"]
 [ext_resource type="PackedScene" uid="uid://dkfwvong7lmki" path="res://Chars/player.tscn" id="2_4xf5a"]
 [ext_resource type="PackedScene" uid="uid://c24mvw6mog33k" path="res://Hazards/death_area.tscn" id="3_kkkvf"]
@@ -10,8 +11,41 @@
 [ext_resource type="PackedScene" uid="uid://cnyd1vwwx87dh" path="res://Items/diamond.tscn" id="7_lyi1i"]
 [ext_resource type="PackedScene" uid="uid://bl4xbenkbhosn" path="res://Items/heart.tscn" id="8_rq5mv"]
 [ext_resource type="PackedScene" uid="uid://ckyata4bog8oi" path="res://Zones/goal.tscn" id="10_exmqc"]
+[ext_resource type="Texture2D" uid="uid://c3vmqy711p3en" path="res://Sprites/Backgrounds/4.png" id="11_06ikb"]
+[ext_resource type="Texture2D" uid="uid://5nfipciapmgq" path="res://Sprites/Backgrounds/6.png" id="11_poq8g"]
+[ext_resource type="Texture2D" uid="uid://b2psuh21vo2e0" path="res://Sprites/Backgrounds/1.png" id="12_nt2xg"]
+[ext_resource type="Texture2D" uid="uid://cn1aqwrysn7b6" path="res://Sprites/Backgrounds/3.png" id="13_ei0mn"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Background Clouds" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(384, 0)
+autoscroll = Vector2(10, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background Clouds"]
+modulate = Color(0.756863, 1, 1, 1)
+position = Vector2(576, 305)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("12_nt2xg")
+
+[node name="Background Forest 1" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.3, 0.3)
+repeat_size = Vector2(384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background Forest 1"]
+position = Vector2(568, 289)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("11_06ikb")
+
+[node name="Background Forest" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.5, 0.5)
+repeat_size = Vector2(384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background Forest"]
+position = Vector2(571, 211)
+scale = Vector2(1.2, 1)
+texture = ExtResource("1_hrhot")
 
 [node name="UI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_1xj1a")]
 player = NodePath("../Player")
@@ -108,3 +142,25 @@ position = Vector2(-582, -58)
 [node name="Goal" parent="." instance=ExtResource("10_exmqc")]
 position = Vector2(701, -9)
 next_level = "res://Levels/Level2.tscn"
+
+[node name="Foreground" type="Parallax2D" parent="."]
+scale = Vector2(1.2, 1.2)
+scroll_scale = Vector2(1.5, 1.5)
+scroll_offset = Vector2(0, -214.765)
+repeat_size = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground"]
+z_index = 100
+position = Vector2(475.833, 98.1375)
+texture = ExtResource("11_poq8g")
+
+[node name="Fog" type="Parallax2D" parent="."]
+scroll_scale = Vector2(1.2, 1.2)
+repeat_size = Vector2(384, 0)
+autoscroll = Vector2(10, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Fog"]
+modulate = Color(1, 1, 1, 0.505882)
+position = Vector2(574, 71)
+scale = Vector2(1.2, 1)
+texture = ExtResource("13_ei0mn")
