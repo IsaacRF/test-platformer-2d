@@ -57,6 +57,10 @@ func _physics_process(delta):
 				velocity.y = -jump_force
 				_smoke_particles.emitting = true
 		
+		#Handle short hops
+		if Input.is_action_just_released("ui_accept") && velocity.y < 0:
+			velocity.y = 0
+		
 		var direction = Input.get_axis("ui_left", "ui_right")
 		if direction:
 			velocity.x = move_toward(velocity.x, direction * move_speed, acceleration)
