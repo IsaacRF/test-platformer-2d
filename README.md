@@ -1,6 +1,6 @@
 # test-platformer-2d
  A test 2D platformer developed in Godot for learning purposes
 
-![platformer_2d_demo](https://github.com/user-attachments/assets/a8e18176-cfa0-4984-b265-7d606c9d4fc3)
+![Demo_1](https://github.com/user-attachments/assets/aec2678b-6d6b-4816-8cc8-49cd1da52d6b)
 
-https://github.com/user-attachments/assets/1749e9b3-ec63-4679-a36f-2d8c75a1a049
+https://github.com/user-attachments/assets/380b029c-40dc-4568-a673-287335103344
