@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dkfwvong7lmki"]
+[gd_scene load_steps=15 format=3 uid="uid://dkfwvong7lmki"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_2cvhw"]
 [ext_resource type="Texture2D" uid="uid://xmqd7pyo42l3" path="res://Sprites/Objects/tile_1003.png" id="2_3hit2"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b8ohwm8scl7mt" path="res://Sprites/Characters/character_0001_death.png" id="2_k4kfu"]
 [ext_resource type="Texture2D" uid="uid://2k3iywmsqila" path="res://Sprites/Characters/character_0001.png" id="3_fvqxq"]
 [ext_resource type="AudioStream" uid="uid://cesq424vl0eem" path="res://Sound/SFX/Death.ogg" id="3_x44u1"]
+[ext_resource type="Texture2D" uid="uid://cskx5yo7ljano" path="res://Sprites/Characters/character_0001_wall.png" id="6_exnm3"]
 [ext_resource type="AudioStream" uid="uid://3vhqx2ccx8be" path="res://Sound/SFX/Jump.mp3" id="6_ravld"]
 [ext_resource type="AudioStream" uid="uid://u6sf5dw2vu8v" path="res://Sound/SFX/Rocket.wav" id="8_532oa"]
 [ext_resource type="AudioStream" uid="uid://c3re1fu8vpm6g" path="res://Sound/SFX/Hit.wav" id="9_olvho"]
@@ -26,7 +27,7 @@ particle_flag_disable_z = true
 emission_shape_scale = Vector3(4, 1, 1)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
-gravity = Vector3(0, 200, 0)
+gravity = Vector3(0, 100, 0)
 scale_min = 0.2
 scale_max = 0.8
 
@@ -66,6 +67,14 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_exnm3")
+}],
+"loop": true,
+"name": &"wall",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0vlhn"]
@@ -92,9 +101,17 @@ lifetime = 0.5
 one_shot = true
 fixed_fps = 60
 
+[node name="SmokeWallParticles" type="GPUParticles2D" parent="."]
+position = Vector2(-8, 3)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_rmdpm")
+texture = ExtResource("2_3hit2")
+lifetime = 0.25
+fixed_fps = 60
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f6yqb")
-animation = &"idle"
+animation = &"wall"
 
 [node name="Sprite" type="Sprite2D" parent="."]
 visible = false

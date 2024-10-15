@@ -13,6 +13,7 @@ signal fuel_updated(fuel)
 @onready var _hurt_sfx = $HurtSFX
 @onready var _sweat_particles = $SweatParticles
 @onready var _smoke_particles = $SmokeParticles
+@onready var _smoke_wall_particles = $SmokeWallParticles
 
 var move_speed : float = 300.0
 var acceleration : float = 20.0
@@ -36,7 +37,17 @@ func _ready():
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		if is_on_wall():
+			velocity.y += gravity * 0.05 * delta
+			if not is_dead: _animated_sprite.play("wall")
+			_smoke_wall_particles.emitting = true
+		else:
+			velocity.y += gravity * delta
+			if not is_dead: _animated_sprite.play("jump")
+			_smoke_wall_particles.emitting = false
+	else:
+		_smoke_wall_particles.emitting = false
+			
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -48,6 +59,13 @@ func _physics_process(delta):
 				_jump_sfx.play()
 				_animated_sprite.play("jump")
 				velocity.y = -jump_force
+			elif is_on_wall_only():
+				#Wall Jump
+				_jump_sfx.play()
+				_animated_sprite.play("jump")
+				velocity.y = -jump_force 
+				var direction = -1 if _animated_sprite.flip_h == true else 1
+				velocity.x += jump_force * direction
 			elif (fuel > 0):
 				#Fly
 				_rocket_sfx.pitch_scale = rng.randf_range(0.5, 1.5)
@@ -72,8 +90,8 @@ func _physics_process(delta):
 				
 			if is_on_floor():
 				_animated_sprite.play("run")
-			else:
-				_animated_sprite.play("jump")
+			#else:
+				#_animated_sprite.play("jump")
 				
 		else:
 			velocity.x = move_toward(velocity.x, 0, deceleration)
