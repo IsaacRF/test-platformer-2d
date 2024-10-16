@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dkfwvong7lmki"]
+[gd_scene load_steps=16 format=3 uid="uid://dkfwvong7lmki"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_2cvhw"]
 [ext_resource type="Texture2D" uid="uid://xmqd7pyo42l3" path="res://Sprites/Objects/tile_1003.png" id="2_3hit2"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://3vhqx2ccx8be" path="res://Sound/SFX/Jump.mp3" id="6_ravld"]
 [ext_resource type="AudioStream" uid="uid://u6sf5dw2vu8v" path="res://Sound/SFX/Rocket.wav" id="8_532oa"]
 [ext_resource type="AudioStream" uid="uid://c3re1fu8vpm6g" path="res://Sound/SFX/Hit.wav" id="9_olvho"]
+[ext_resource type="PackedScene" uid="uid://dsx2ia5uv6oek" path="res://Utils/emit_light.tscn" id="11_x05ua"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_58o0p"]
 particle_flag_disable_z = true
@@ -111,7 +112,7 @@ fixed_fps = 60
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_f6yqb")
-animation = &"wall"
+animation = &"idle"
 
 [node name="Sprite" type="Sprite2D" parent="."]
 visible = false
@@ -136,3 +137,6 @@ stream = ExtResource("8_532oa")
 
 [node name="HurtSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("9_olvho")
+
+[node name="EmitLight" parent="." instance=ExtResource("11_x05ua")]
+position = Vector2(0, 1)
