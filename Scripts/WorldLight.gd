@@ -10,10 +10,11 @@ enum DayState { DAY, NOON, NIGHT}
 	DayState.NOON: noon_color,
 	DayState.NIGHT: night_color
 }
+@export var current_day_state: DayState = DayState.DAY
 
 func _ready():
 	#TODO: Force update the light at load for now. Can later be changed to add a clock check system
-	update_light(DayState.NIGHT)
+	update_light(current_day_state)
 
 func update_light(day_state: DayState) -> void:
 	var tween = get_tree().create_tween()

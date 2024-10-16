@@ -181,3 +181,4 @@ script = ExtResource("16_ccc8l")
 day_color = Color(1, 1, 1, 1)
 noon_color = Color(0.8, 0.364706, 0.407843, 1)
 night_color = Color(0.0666667, 0.133333, 0.482353, 1)
+current_day_state = 2
