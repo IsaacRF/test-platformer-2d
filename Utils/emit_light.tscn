@@ -8,4 +8,5 @@ script = ExtResource("1_jyfu5")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(1, 1, 0.682353, 1)
+shadow_enabled = true
 texture = ExtResource("1_yceqe")
