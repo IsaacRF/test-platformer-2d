@@ -61,6 +61,5 @@ debug_color = Color(0.986556, 0, 0.322367, 0.42)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_f8676")
-sdf_collision = false
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

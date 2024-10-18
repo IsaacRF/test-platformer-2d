@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://dj0y80cx4wynw"]
+[gd_scene load_steps=20 format=4 uid="uid://dj0y80cx4wynw"]
 
 [ext_resource type="Texture2D" uid="uid://dtyydir3sffkx" path="res://Sprites/Backgrounds/Sky-0001.png" id="1_5pmpn"]
 [ext_resource type="Texture2D" uid="uid://b2psuh21vo2e0" path="res://Sprites/Backgrounds/1.png" id="1_alvej"]
@@ -16,7 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://ckyata4bog8oi" path="res://Zones/goal.tscn" id="13_cnie5"]
 [ext_resource type="Texture2D" uid="uid://5nfipciapmgq" path="res://Sprites/Backgrounds/6.png" id="14_8k020"]
 [ext_resource type="Texture2D" uid="uid://cn1aqwrysn7b6" path="res://Sprites/Backgrounds/3.png" id="15_usqfs"]
-[ext_resource type="Script" path="res://Scripts/WorldLight.gd" id="16_ccc8l"]
+[ext_resource type="PackedScene" uid="uid://bl0tdpncfiga1" path="res://Utils/world_light.tscn" id="18_dwako"]
+[ext_resource type="PackedScene" uid="uid://bpcoqagraqrs1" path="res://Utils/rain.tscn" id="18_kxram"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_k71jd"]
+polygon = PackedVector2Array(398, -35, 418, -33, 420, -51, 432, -52, 434, 217, 1, 214, 1, 0, 380, 0, 380, -16, 400, -16)
 
 [node name="Main" type="Node2D"]
 
@@ -175,10 +179,12 @@ position = Vector2(574, 71)
 scale = Vector2(1.2, 1)
 texture = ExtResource("15_usqfs")
 
-[node name="WorldLight" type="DirectionalLight2D" parent="."]
-blend_mode = 2
-script = ExtResource("16_ccc8l")
-day_color = Color(1, 1, 1, 1)
-noon_color = Color(0.8, 0.364706, 0.407843, 1)
-night_color = Color(0.0666667, 0.133333, 0.482353, 1)
-current_day_state = 2
+[node name="Rain" parent="." instance=ExtResource("18_kxram")]
+position = Vector2(756, 164)
+
+[node name="RainCollision" type="LightOccluder2D" parent="."]
+position = Vector2(-199, 0)
+occluder = SubResource("OccluderPolygon2D_k71jd")
+occluder_light_mask = 0
+
+[node name="WorldLight" parent="." instance=ExtResource("18_dwako")]

@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpcoqagraqrs1"]
+
+[ext_resource type="AudioStream" uid="uid://dq5qcfh1j31x3" path="res://Sound/SFX/rain.ogg" id="1_xgmnd"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oapcb"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 1, 1)
+initial_velocity_min = 18.13
+initial_velocity_max = 18.13
+gravity = Vector3(100, 500, 0)
+scale_min = 0.5
+scale_max = 2.0
+collision_mode = 2
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 5
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_inc5b"]
+lifetime_randomness = 0.24
+particle_flag_disable_z = true
+direction = Vector3(1, -50, 0)
+initial_velocity_min = 87.13
+initial_velocity_max = 138.54
+gravity = Vector3(0, 98, 0)
+scale_max = 1.5
+
+[node name="Rain" type="Node2D"]
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_scale = Vector2(1.5, 1)
+repeat_size = Vector2(500, 1)
+repeat_times = 2
+
+[node name="RainParticles" type="GPUParticles2D" parent="Parallax2D"]
+amount = 1000
+sub_emitter = NodePath("../RainSplashParticles")
+process_material = SubResource("ParticleProcessMaterial_oapcb")
+lifetime = 11.0
+fixed_fps = 60
+collision_base_size = 11.79
+trail_enabled = true
+trail_lifetime = 0.02
+trail_sections = 2
+
+[node name="RainSplashParticles" type="GPUParticles2D" parent="Parallax2D"]
+top_level = true
+position = Vector2(-8, -158)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_inc5b")
+lifetime = 0.7
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 60
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_xgmnd")
+autoplay = true
+parameters/looping = true
